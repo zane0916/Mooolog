@@ -4,11 +4,24 @@ Design document was edited to clarify purposes of each database table, and some 
 
 Task the Second:
 	- Reading: The reading makes a career in programming appear bleak, yet at the same time it touches on a lot of relatable concepts. 
-		One such concept revolves around the mentality of no one really knowing what's going on, but if it works, hey, it works.
+		One of the biggest emphasized points was that it is easy to get distracted by little features and functionality, that while might be cool or interesting, detract from the main objective/desired-product if they're focused on instead. So, during our project make sure we focus in the important deliverable before the fluff.
 		This also teaches us that no code is perfect, and that there will always be errors that we can improve on in our assignments. 
-		It was also relatable when the author talked about constantly learning more and more tools, and tucking away random facts you pick up.
-		This can apply not only to coding, but to other subjects as well, where we expand our knowledge based on things we already learned. 
+		It was also relatable when the author talked about constantly learning more and more tools, and tucking away random facts you pick up to use later.
+		This can apply not only to coding, but to other subjects as well, where we expand our knowledge based on things we already learned, and of course where we would work in teams. 
 		We think it was this relatability that made the reading really interesting and also the fact that it allowed us to peek into the adult world of programming.	
 	- Concrete Actions/Procedures:
 		1. Do your part, but don't be afraid to ask the group for help.
 		2. Make sure to update the devlog, both to keep track of our progress and so that the group can understand what you did.
+
+joshuaW -- 2018-10-15 00:32
+
+Added design.pdf to repository
+
+All -- 2018-10-14 9:45
+
+Worked on design doc and delegated roles, including:
+- Program components
+- Database schema
+- Sitemap
+- Component map
+- Team-member tasks
