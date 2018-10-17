@@ -1,0 +1,11 @@
+All -- 2018-10-16 23:00
+	Task the Second:
+	- Reading: The reading makes a career in programming appear bleak, yet at the same time it touches on a lot of relatable concepts. 
+		One such concept revolves around the mentality of no one really knowing what's going on, but if it works, hey, it works.
+		This also teaches us that no code is perfect, and that there will always be errors that we can improve on in our assignments. 
+		It was also relatable when the author talked about constantly learning more and more tools, and tucking away random facts you pick up.
+		This can apply not only to coding, but to other subjects as well, where we expand our knowledge based on things we already learned. 
+		We think it was this relatability that made the reading really interesting and also the fact that it allowed us to peek into the adult world of programming.	
+	- Concrete Actions/Procedures:
+		1. Do your part, but don't be afraid to ask the group for help.
+		2. Make sure to update the devlog, both to keep track of our progress and so that the group can understand what you did.
