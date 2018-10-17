@@ -3,7 +3,7 @@ All -- 2018-10-16 23:00
 Design document was edited to clarify purposes of each database table, and some contradictory details on features were changed. Titles of entry no longer have to be unique, and the search function only searches by the username of the blog's authors.
 
 Task the Second:
-	- Reading: The reading makes a career in programming appear bleak, yet at the same time it touches on a lot of relatable concepts. 
+	- Reading: The reading makes a career in programming appear (somewhat) bleak, yet at the same time it touches on a lot of relatable concepts, and sheds light on how to maximize team collaboration and to learn from your work and others' work. 
 		One of the biggest emphasized points was that it is easy to get distracted by little features and functionality, that while might be cool or interesting, detract from the main objective/desired-product if they're focused on instead. So, during our project make sure we focus in the important deliverable before the fluff.
 		This also teaches us that no code is perfect, and that there will always be errors that we can improve on in our assignments. 
 		It was also relatable when the author talked about constantly learning more and more tools, and tucking away random facts you pick up to use later.
