@@ -1,5 +1,8 @@
 All -- 2018-10-16 23:00
-	Task the Second:
+
+Design document was edited to clarify purposes of each database table, and some contradictory details on features were changed. Titles of entry no longer have to be unique, and the search function only searches by the username of the blog's authors.
+
+Task the Second:
 	- Reading: The reading makes a career in programming appear bleak, yet at the same time it touches on a lot of relatable concepts. 
 		One such concept revolves around the mentality of no one really knowing what's going on, but if it works, hey, it works.
 		This also teaches us that no code is perfect, and that there will always be errors that we can improve on in our assignments. 
