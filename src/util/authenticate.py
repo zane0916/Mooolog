@@ -22,7 +22,8 @@ def login_user(username, password):
     db.close()
     return
 
-register_user("test", "test2")
-login_user("test", "test2")
-login_user("aa", "test2")
-login_user("test", "aa")
+# tests
+# register_user("test", "test2")
+# login_user("test", "test2")
+# login_user("aa", "test2")
+# login_user("test", "aa")
