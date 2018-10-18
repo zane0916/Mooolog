@@ -50,3 +50,13 @@ Task the Second:
 		1. Do your part, but don't be afraid to ask the group for help.
 		2. Make sure to update the devlog, both to keep track of our progress and so that the group can understand what you did.
 ==============================================================
+
+brianL -- 2018-10-17 11:50
+--------------------------------------------------------------
+Set up basic template and python script to initialize database tables
+==============================================================
+
+brianL -- 2018-10-18 12:13
+-------------------------------------------------------------
+Prototype account registration and login system (only checks the DB)
+=============================================================
