@@ -4,6 +4,7 @@
 # 2018-10-17
 
 from flask import Flask, session, render_template, url_for, redirect, request, flash
+from util import authenticate
 import os
 
 app = Flask(__name__)
@@ -17,6 +18,11 @@ def hello_world():
 @app.route('/register')
 def reg():
     return render_template("/welcome.html")
+
+@app.route('/auth', methods=["POST"])
+def auth():
+    print(request.form)
+    return "x"
 
 if __name__=="__main__":
     app.debug=True
