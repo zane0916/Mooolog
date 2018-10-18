@@ -7,11 +7,16 @@ from flask import Flask, session, render_template, url_for, redirect, request, f
 import os
 
 app = Flask(__name__)
-#app.secret_key=os.urandom(32)
+app.secret_key=os.urandom(32)
+
 
 @app.route('/')
 def hello_world():
-    return "Hello world"
+    return redirect(url_for('reg'))
+
+@app.route('/register')
+def reg():
+    return render_template("/welcome.html")
 
 if __name__=="__main__":
     app.debug=True

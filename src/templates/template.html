@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>{% title %}</title>
+  <head>
+    {% block head %}
+    <title>
+      {% block title %}{% endblock %}
+      Welcome
+    </title>
+    {% endblock %}
     </head>
     <body>
       <form action="/auth" method="POST">

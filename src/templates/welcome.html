@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% block head %}
+    <title>
+      {% block title %}{% endblock %}
+      Welcome
+    </title>
+    {% endblock %}
+    </head>
+    <body>
+      <form action="/register" method="POST">
+	Create Username:<input type="text" name="username"><br>
+	Create Password:<input type="text" name="password"><br>
+	Re-enter Password:<input type="text" name="re-enter password"><br>
+	<input type="submit" name="Submit">
+	</form>
+    </body>
+</html>
