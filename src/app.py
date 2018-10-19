@@ -25,6 +25,7 @@ def auth():
     if(request.form['password']!=request.form['re-enter password']):
         flash("Passwords do not match!")
         return redirect(url_for('reg'))
+    authenticate.register_user(request.form['username'],request.form['password'])
     return render_template("/home.html",
                                user=request.form['username'])
 
