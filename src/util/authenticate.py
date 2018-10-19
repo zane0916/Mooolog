@@ -1,7 +1,7 @@
 import sqlite3
 
 def register_user(username, password):
-    db = sqlite3.connect("../data/Mooolog.db")
+    db = sqlite3.connect("data/Mooolog.db")
     c = db.cursor()
     command = "INSERT INTO users (username, password) VALUES(?, ?);"
     c.execute(command, (username, password))
@@ -9,7 +9,7 @@ def register_user(username, password):
     db.close()
 
 def login_user(username, password):
-    db = sqlite3.connect("../data/Mooolog.db")
+    db = sqlite3.connect("data/Mooolog.db")
     c = db.cursor()
     command = "SELECT username, password FROM users;"
     c.execute(command)
