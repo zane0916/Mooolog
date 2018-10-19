@@ -1,17 +1,12 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>
-      Register
-    </title>
-    <h1><center>Register</center></h1>
-    </head>
-    <body>
-      <form action="/auth" method="POST">
+{% extends "base.html" %}
+
+{% block title %} Register Account {% endblock %}
+
+{% block body %}
+<form action="/auth" method="POST">
 	<center>Create Username:<input type="text" name="username"><br>
 	Create Password:<input type="text" name="password"><br>
 	Re-enter Password:<input type="text" name="re-enter password"><br>
 	<input type="submit" name="Submit"></center>
-      </form>
-    </body>
-</html>
+</form>
+{% endblock %}
