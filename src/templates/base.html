@@ -12,12 +12,17 @@
         {% with msgs = get_flashed_messages() %}
             {% if msgs %}
                 {% for msg in msgs %}
-                    {{msg}}
+                    <center><i>{{msg}}</i></center>
                 {% endfor %}
             {% endif %}
         {% endwith %}
+        <br>
 
         {% block body %}
         {% endblock %}
+
+        <br><br>
+        <hr>
+        Site by Team Mooo - Brian Lee, Emily Lee, Thomas Lee, Joshua Weiner
     </body>
 </html>

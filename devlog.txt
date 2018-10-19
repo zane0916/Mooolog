@@ -65,3 +65,8 @@ emilyL -- 2018-10-18 12:25
 -------------------------------------------------------------
 Worked on a basic register page with input- changed app.py and created welcome.html
 =============================================================
+
+brianL -- 2018-10-18 12:27
+-------------------------------------------------------------
+Cleaner Jinja templates with inheritance, displays flashed messages
+=============================================================
