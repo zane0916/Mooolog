@@ -70,3 +70,9 @@ brianL -- 2018-10-18 12:27
 -------------------------------------------------------------
 Cleaner Jinja templates with inheritance, displays flashed messages
 =============================================================
+
+emilyL -- 2018-10-19 12:30
+-------------------------------------------------------------
+Checks if passwords match when registering, otherwise redirects and flashes message.
+If username and password is allowed, adds to database.
+=============================================================
