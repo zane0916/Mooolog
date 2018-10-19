@@ -21,8 +21,13 @@ def reg():
 
 @app.route('/auth', methods=["POST"])
 def auth():
-    print(request.form)
-    return "x"
+    #print(request.form)
+    if(request.form['password']!=request.form['re-enter password']):
+        flash("Passwords do not match!")
+        return redirect(url_for('reg'))
+    return render_template("/home.html",
+                               user=request.form['username'])
+
 
 if __name__=="__main__":
     app.debug=True
