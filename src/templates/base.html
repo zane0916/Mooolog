@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% block head %}
+    <title>
+      {% block title %}{% endblock %}
+    </title>
+    {% endblock %}
+    </head>
+    <body>
+        <center><h1>Mooolog</h1></center>
+        {% with msgs = get_flashed_messages() %}
+            {% if msgs %}
+                {% for msg in msgs %}
+                    {{msg}}
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        {% block body %}
+        {% endblock %}
+    </body>
+</html>
