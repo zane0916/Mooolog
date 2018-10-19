@@ -60,3 +60,8 @@ brianL -- 2018-10-18 12:13
 -------------------------------------------------------------
 Prototype account registration and login system (only checks the DB)
 =============================================================
+
+emilyL -- 2018-10-18 12:25
+-------------------------------------------------------------
+Worked on a basic register page with input- changed app.py and created welcome.html
+=============================================================
