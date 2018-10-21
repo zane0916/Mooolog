@@ -76,3 +76,10 @@ emilyL -- 2018-10-19 12:30
 Checks if passwords match when registering, otherwise redirects and flashes message.
 If username and password is allowed, adds to database.
 =============================================================
+
+brianL -- 2018-10-21 13:10
+-------------------------------------------------------------
+Created main page.
+Validifying user input is now done in the register_user function,
+rather than the flask app.
+=============================================================

@@ -10,26 +10,26 @@ import os
 app = Flask(__name__)
 app.secret_key=os.urandom(32)
 
-
 @app.route('/')
-def hello_world():
-    return redirect(url_for('reg'))
+def main():
+    return render_template("/main.html")
 
-@app.route('/register')
+@app.route('/register', methods=["GET", "POST"])
 def reg():
-    return render_template("/welcome.html")
+    if request.method == "GET":
+        return render_template("/register.html")
+    else:
+        success, error = authenticate.register_user(
+                request.form['username'], 
+                request.form['password'],
+                request.form['re-enter password'])
+        if success:
+            return render_template("/home.html",
+                    user=request.form['username'])
+        else:
+            flash(error)
+            return redirect(url_for('reg'))
 
-@app.route('/auth', methods=["POST"])
-def auth():
-    #print(request.form)
-    if(request.form['password']!=request.form['re-enter password']):
-        flash("Passwords do not match!")
-        return redirect(url_for('reg'))
-    authenticate.register_user(request.form['username'],request.form['password'])
-    return render_template("/home.html",
-                               user=request.form['username'])
-
-
-if __name__=="__main__":
+if __name__ == "__main__":
     app.debug=True
     app.run()
