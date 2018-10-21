@@ -4,7 +4,7 @@ def register_user(username, password, repassword):
     '''
     Attempts to register a user and enter it in the users table.
 
-    Returns a tuple containing a boolean indicating success,
+    Returns a tuple containing a boolean indicating success
     and a message to flash to the user.
     '''
     if username == '' or password == '' or repassword == '':
@@ -23,6 +23,12 @@ def register_user(username, password, repassword):
     return (True, "Successfully registered {}".format(username))
 
 def login_user(username, password):
+    '''
+    Attempts to log in a user by checking the users table.
+
+    Returns a tuple containing a boolean indicating success
+    and a message to flash to the user.
+    '''
     if username == '' or password == '':
         return (False, "Username or password missing!")
 
