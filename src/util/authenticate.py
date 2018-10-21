@@ -26,7 +26,7 @@ def login_user(username, password):
     if username == '' or password == '':
         return (False, "Username or password missing!")
 
-    with sqlite3.connect("data/Moolong.db") as db:
+    with sqlite3.connect("data/Mooolog.db") as db:
         c = db.cursor()
         command = "SELECT username, password FROM users;"
         c.execute(command)
