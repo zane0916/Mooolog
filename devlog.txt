@@ -83,3 +83,8 @@ Created main page.
 Validifying user input is now done in the register_user function,
 rather than the flask app.
 =============================================================
+
+brianL -- 2018-10-21 13:35
+-------------------------------------------------------------
+Implemented simple login and the login page
+=============================================================

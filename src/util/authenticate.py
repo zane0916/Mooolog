@@ -5,36 +5,35 @@ def register_user(username, password, repassword):
     Attempts to register a user and enter it in the users table.
 
     Returns a tuple containing a boolean indicating success,
-    and an error message (empty if successful)
+    and a message to flash to the user.
     '''
     if username == '' or password == '' or repassword == '':
         return (False, "Please fill in all fields.")
     elif password != repassword:
         return (False, "Passwords do not match!")
 
-    db = sqlite3.connect("data/Mooolog.db")
-    c = db.cursor()
+    with sqlite3.connect("data/Mooolog.db") as db:
+        c = db.cursor()
 
-    command = "INSERT INTO users (username, password) VALUES(?, ?);"
-    c.execute(command, (username, password))
+        # TODO: Check if username already exists
+        command = "INSERT INTO users (username, password) VALUES(?, ?);"
+        c.execute(command, (username, password))
 
-    db.commit()
-    db.close()
-    return (True, )
+        db.commit()
+    return (True, "Successfully registered {}".format(username))
 
 def login_user(username, password):
-    db = sqlite3.connect("data/Mooolog.db")
-    c = db.cursor()
-    command = "SELECT username, password FROM users;"
-    c.execute(command)
-    for user in c:
-        if username == user[0] and password == user[1]:
-            print("Success")
-            db.close()
-            return
-    print("Error")
-    db.close()
-    return
+    if username == '' or password == '':
+        return (False, "Username or password missing!")
+
+    with sqlite3.connect("data/Moolong.db") as db:
+        c = db.cursor()
+        command = "SELECT username, password FROM users;"
+        c.execute(command)
+        for user in c:
+            if user and username == user[0] and password == user[1]:
+                return (True, "Successfully logged in!")
+    return (False, "Incorrect username or password.")
 
 # tests
 # register_user("test", "test2")

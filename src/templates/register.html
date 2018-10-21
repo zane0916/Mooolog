@@ -4,9 +4,11 @@
 
 {% block body %}
 <form action="/register" method="POST">
-	<center>Create Username:<input type="text" name="username"><br>
-	Create Password:<input type="text" name="password"><br>
-	Re-enter Password:<input type="text" name="re-enter password"><br>
-	<input type="submit" name="Submit"></center>
+	<center>
+    Create Username:<input type="text" name="username"><br>
+	Create Password:<input type="password" name="password"><br>
+	Re-enter Password:<input type="password" name="re-enter password"><br>
+    <input type="submit" name="Submit" value="Register">
+    </center>
 </form>
 {% endblock %}

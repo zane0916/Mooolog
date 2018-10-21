@@ -12,23 +12,37 @@ app.secret_key=os.urandom(32)
 
 @app.route('/')
 def main():
-    return render_template("/main.html")
+    return render_template("main.html")
 
 @app.route('/register', methods=["GET", "POST"])
 def reg():
     if request.method == "GET":
-        return render_template("/register.html")
+        return render_template("register.html")
     else:
-        success, error = authenticate.register_user(
+        success, message = authenticate.register_user(
                 request.form['username'], 
                 request.form['password'],
                 request.form['re-enter password'])
+        flash(message)
         if success:
-            return render_template("/home.html",
-                    user=request.form['username'])
+            return render_template("/main.html")
         else:
-            flash(error)
             return redirect(url_for('reg'))
+
+@app.route('/login', methods=["GET", "POST"])
+def login():
+    if request.method == "GET":
+        return render_template("login.html")
+    else:
+        success, message = authenticate.login_user(
+                request.form['username'],
+                request.form['password'])
+        flash(message)
+        if success:
+            # TODO: Probably should redirect to somewhere else
+            return redirect(url_for('main'));
+        else:
+            return redirect(url_for('login'))
 
 if __name__ == "__main__":
     app.debug=True
