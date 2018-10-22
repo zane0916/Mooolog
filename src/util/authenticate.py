@@ -15,12 +15,26 @@ def register_user(username, password, repassword):
     with sqlite3.connect("data/Mooolog.db") as db:
         c = db.cursor()
 
-        # TODO: Check if username already exists
-        command = "INSERT INTO users (username, password) VALUES(?, ?);"
-        c.execute(command, (username, password))
+        if user_exists(username):
+            return (False, "Username {} already exists.".format(username))
+        else:
+            command = "INSERT INTO users (username, password) VALUES(?, ?);"
+            c.execute(command, (username, password))
 
         db.commit()
     return (True, "Successfully registered {}".format(username))
+
+def user_exists(username):
+    '''
+    Returns whether a user with the given username exists
+    '''
+    with sqlite3.connect("data/Mooolog.db") as db:
+        c = db.cursor()
+
+        command = "SELECT * FROM users WHERE username = ?"
+        c.execute(command, (username,))
+
+        return len(c.fetchall()) > 0
 
 def login_user(username, password):
     '''
@@ -40,9 +54,3 @@ def login_user(username, password):
             if user and username == user[0] and password == user[1]:
                 return (True, "Successfully logged in!")
     return (False, "Incorrect username or password.")
-
-# tests
-# register_user("test", "test2")
-# login_user("test", "test2")
-# login_user("aa", "test2")
-# login_user("test", "aa")
