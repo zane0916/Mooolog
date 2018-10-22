@@ -39,11 +39,24 @@ def login():
                 request.form['password'])
         flash(message)
         if success:
+            session['loggedin']=request.form['username']
             # TODO: Probably should redirect to somewhere else
-            return redirect(url_for('main'));
+            return redirect(url_for('logged'));
         else:
             return redirect(url_for('login'))
 
+@app.route('/welcome', methods=["GET", "POST"])
+def logged():
+    return render_template("logged.html", user=session['loggedin'])
+    
+@app.route('/logout', methods=["GET", "POST"])
+def logout():
+    print(session)
+    session.pop('loggedin')
+    print(session)
+    return redirect(url_for('login'))
+
+    
 if __name__ == "__main__":
     app.debug=True
     app.run()
