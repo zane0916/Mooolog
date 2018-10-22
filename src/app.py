@@ -39,17 +39,24 @@ def login():
                 request.form['password'])
         flash(message)
         if success:
-            return redirect(url_for('userpage', username = request.form['username']));
+            session['loggedin']=request.form['username']
+            return redirect(url_for('userpage', username=request.form['username']));
         else:
             return redirect(url_for('login'))
 
 @app.route('/user/<username>')
 def userpage(username):
     if authenticate.user_exists(username):
-        return render_template("userpage.html", username = username)
+        return render_template("userpage.html", username=username)
     else:
         return "temp"
 
+@app.route('/logout', methods=["GET", "POST"])
+def logout():
+    session.pop('loggedin')
+    return redirect(url_for('login'))
+
+    
 if __name__ == "__main__":
     app.debug=True
     app.run()
