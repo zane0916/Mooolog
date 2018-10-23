@@ -31,6 +31,6 @@ def blog_exists(title):
 def find_id(username):
     with sqlite3.connect("data/Mooolog.db") as db:
         c = db.cursor()
-
         command = "SELECT user_id FROM users WHERE username = ?"
-        c.execute(command, (username,))
+        id = c.execute(command, (username,))
+        return id

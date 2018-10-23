@@ -48,7 +48,13 @@ def login():
 @app.route('/user/<username>')
 def userpage(username):
     if authenticate.user_exists(username):
-        return render_template("userpage.html", username=username)
+        with sqlite3.connect("data/Mooolog.db") as db:
+            c = db.cursor()
+            command = "SELECT user_id FROM users WHERE username = ?"
+            user_id = c.execute(command, (username,))
+            command = "SELECT title FROM blogs WHERE user_id = ?"
+            blogs = c.execute(command, (user_id,))
+        return render_template("userpage.html", username=username, blogs=blogs)
     else:
         return "temp"
 

@@ -5,6 +5,10 @@
 {% block body %}
 
 <h1>{{username}}</h1>
+<ul>
+{% for blog in blogs %}
+  <li>{{blog}}</li>
+{% endfor %}
 
 <a href="/create">Create a New Blog</a>
 {% endblock %}
