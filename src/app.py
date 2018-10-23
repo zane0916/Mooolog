@@ -13,7 +13,10 @@ app.secret_key=os.urandom(32)
 
 @app.route('/')
 def main():
-    return render_template("main.html")
+    if session.get('loggedin') is None:
+        return render_template("main.html")
+    else:
+        return redirect(url_for('userpage', username=session['loggedin']))
 
 @app.route('/register', methods=["GET", "POST"])
 def reg():
