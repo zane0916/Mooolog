@@ -13,6 +13,9 @@ app.secret_key=os.urandom(32)
 
 @app.route('/')
 def main():
+    username = authenticate.is_loggedin(session)
+    if username:
+        return redirect(url_for('userpage', username=username))
     return render_template("main.html")
 
 @app.route('/register', methods=["GET", "POST"])
@@ -33,11 +36,12 @@ def reg():
 @app.route('/login', methods=["GET", "POST"])
 def login():
     if request.method == "GET":
-        if session.get('loggedin') is None:
-            return render_template("login.html")
-        else:
+        username = authenticate.is_loggedin(session)
+        if username:
             flash("You are already logged in!")
-            return redirect(url_for('userpage', username=session.get('loggedin')))
+            return redirect(url_for('userpage', username=username))
+        else:
+            return render_template("login.html")
     else:
         success, message = authenticate.login_user(
                 request.form['username'],
@@ -61,7 +65,7 @@ def userpage(username):
 
 @app.route('/logout', methods=["GET", "POST"])
 def logout():
-    if 'loggedin' in session:
+    if authenticate.is_loggedin(session):
         session.pop('loggedin')
         flash("Successfully logged out.")
     else:
@@ -70,7 +74,7 @@ def logout():
 
 @app.route('/create', methods=["GET", "POST"])
 def create():
-    if session.get('loggedin') is None:
+    if not authenticate.is_loggedin(session):
         flash("You must be logged in to create a post")
         return redirect(url_for('main'))
     elif request.method=="GET":
@@ -90,6 +94,9 @@ def create():
         else:
             return redirect(url_for('create'))
 
+@app.route('/blog/<title>')
+def blog(title):
+    return "Temp"
 
 if __name__ == "__main__":
     app.debug=True

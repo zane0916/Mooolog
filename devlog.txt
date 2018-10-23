@@ -32,7 +32,7 @@ Worked on design doc and delegated roles, including:
 
 joshuaW -- 2018-10-15 00:32
 --------------------------------------------------------------
-Added design.pdf to repository
+- Added design.pdf to repository
 ==============================================================
 
 All -- 2018-10-16 23:00
@@ -131,4 +131,10 @@ emilyL -- 2018-10-24 12:32
 brianL -- 2018-10-24 12:33
 -------------------------------------------------------------
 - Login page redirects you back if you are already logged in
+==============================================================
+
+brianL -- 2018-10-24 12:33
+-------------------------------------------------------------
+- Made is_loggedin function
+- Bunch of redirects depending on whether the user is logged in or not
 ==============================================================

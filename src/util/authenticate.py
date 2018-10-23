@@ -57,3 +57,12 @@ def login_user(username, password):
                 if check_password_hash(user[1], password):
                     return (True, "Successfully logged in!")
     return (False, "Incorrect username or password.")
+
+def is_loggedin(session):
+    '''
+    Given a session, returns the username of the user if the user is logged in.
+    Otherwise, returns False.
+    '''
+    if session.get('loggedin') is None:
+        return False
+    return session.get('loggedin')
