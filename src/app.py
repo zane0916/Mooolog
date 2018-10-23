@@ -37,6 +37,9 @@ def reg():
 @app.route('/login', methods=["GET", "POST"])
 def login():
     if request.method == "GET":
+        if 'loggedin' in session:
+            flash("You are already logged in!")
+            return redirect(url_for('userpage', username = session['loggedin']))
         return render_template("login.html")
     else:
         success, message = authenticate.login_user(

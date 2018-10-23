@@ -117,3 +117,8 @@ brianL -- 2018-10-24 12:27
 - Passwords are stored as hash
 (Reminder to self: Ask for formal permission to use it)
 ==============================================================
+
+brianL -- 2018-10-24 12:33
+-------------------------------------------------------------
+- Login page redirects you back if you are already logged in
+==============================================================
