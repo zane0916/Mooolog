@@ -2,15 +2,15 @@
 
 How to run our project:
 
-If flask is not installed:
-	1. Download python3
-	2. To create a virtual environment:
-		python3 -m venv <venv>
-	3. Activate the virtual environment:
-		. <venv>/bin/activate
-	4. While in the virtual environment:
-		pip3 install wheel
-		pip3 install flask
+If flask is not installed:<br>
+1. Download python3<br>
+2. To create a virtual environment:<br>
+	- python3 -m venv <venv><br>
+3. Activate the virtual environment:<br>
+	- . <venv>/bin/activate<br>
+4. While in the virtual environment:<br>
+	- pip3 install wheel<br>
+	- pip3 install flask
 
 To run the code:
 	python src/app.py
