@@ -1,4 +1,5 @@
 import sqlite3
+from werkzeug.security import generate_password_hash, check_password_hash
 
 def register_user(username, password, repassword):
     '''
@@ -18,8 +19,9 @@ def register_user(username, password, repassword):
         if user_exists(username):
             return (False, "Username {} already exists.".format(username))
         else:
+            pw_hash = generate_password_hash(password)
             command = "INSERT INTO users (username, password) VALUES(?, ?);"
-            c.execute(command, (username, password))
+            c.execute(command, (username, pw_hash))
 
         db.commit()
     return (True, "Successfully registered {}".format(username))
@@ -51,6 +53,7 @@ def login_user(username, password):
         command = "SELECT username, password FROM users;"
         c.execute(command)
         for user in c:
-            if user and username == user[0] and password == user[1]:
-                return (True, "Successfully logged in!")
+            if user and username == user[0]:
+                if check_password_hash(user[1], password):
+                    return (True, "Successfully logged in!")
     return (False, "Incorrect username or password.")
