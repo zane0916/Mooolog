@@ -7,12 +7,8 @@
 <h1>{{username}}</h1>
 <ul>
 {% for blog in blogs %}
-  <li>{{blog}}</li>
+  <li>{{blog[2]}}</li>
 {% endfor %}
 
 <a href="/create">Create a New Blog</a>
-
-<br><br>
-
-<a href="/login">Logout</a>
 {% endblock %}

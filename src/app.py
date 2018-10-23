@@ -7,17 +7,13 @@ from flask import Flask, session, render_template, url_for, redirect, request, f
 from datetime import datetime
 from util import authenticate, make_blog
 import os
-import sqlite3
 
 app = Flask(__name__)
 app.secret_key=os.urandom(32)
 
 @app.route('/')
 def main():
-    if session.get('loggedin') is None:
-        return render_template("main.html")
-    else:
-        return redirect(url_for('userpage', username=session['loggedin']))
+    return render_template("main.html")
 
 @app.route('/register', methods=["GET", "POST"])
 def reg():
@@ -37,9 +33,6 @@ def reg():
 @app.route('/login', methods=["GET", "POST"])
 def login():
     if request.method == "GET":
-        if 'loggedin' in session:
-            flash("You are already logged in!")
-            return redirect(url_for('userpage', username = session['loggedin']))
         return render_template("login.html")
     else:
         success, message = authenticate.login_user(
@@ -55,13 +48,9 @@ def login():
 @app.route('/user/<username>')
 def userpage(username):
     if authenticate.user_exists(username):
-        with sqlite3.connect("data/Mooolog.db") as db:
-            c = db.cursor()
-            command = "SELECT user_id FROM users WHERE username = ?"
-            c.execute(command, (username,))
-            user_id = c.fetchone()[0]
-            command = "SELECT title FROM blogs WHERE user_id = ?"
-            blogs = c.execute(command, (user_id,))
+        user_id = make_blog.find_id(username)
+        blogs = make_blog.get_titles(user_id)
+        print(blogs)
         return render_template("userpage.html", username=username, blogs=blogs)
     else:
         return "temp"

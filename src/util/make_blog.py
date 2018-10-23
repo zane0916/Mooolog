@@ -28,9 +28,18 @@ def blog_exists(title):
 
         return len(c.fetchall()) > 0
 
-def find_id(username):
+def find_id(u_name):
     with sqlite3.connect("data/Mooolog.db") as db:
         c = db.cursor()
-        command = "SELECT user_id FROM users WHERE username = ?"
-        id = c.execute(command, (username,))
-        return id
+        command = "SELECT user_id FROM users WHERE username=?"
+        c.execute(command, (u_name,))
+        id = c.fetchall()
+        return id[0][0]
+
+def get_titles(u_id):
+    with sqlite3.connect("data/Mooolog.db") as db:
+        c = db.cursor()
+        command = "SELECT * FROM blogs WHERE user_id=?"
+        c.execute(command, (u_id,))
+        blogs = c.fetchall()
+        return blogs
