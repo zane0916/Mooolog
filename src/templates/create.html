@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block body %}
+  <h2>Create A Blog</h2>
+  <form action="/create" method="POST">
+    <p>
+      <input type="text" name="title" placeholder="Title"></input>
+    </p>
+    <p>
+      <input type="text" name="category" placeholder="Category"></input>
+    </p>
+    <p>
+      <input type="submit"></input>
+    </p>
+  </form>
+  {% if success %}
+  <h3>Add your first entry!</h3>
+  <a href="/">No thanks!</a>
+  <form action="/create-entry">
+    <p>
+      <input type="text" name="entry-title" placeholder="Entry title"></input>
+    </p>
+    <p>
+      <input type="text" name="entry-content" placeholder="Entry title"></input>
+    </p>
+    <p>
+      <input type="submit"></input>
+    </p>
+  </form>
+  {% endif %}
+{% endblock %}

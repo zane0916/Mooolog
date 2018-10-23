@@ -4,7 +4,8 @@
 # 2018-10-17
 
 from flask import Flask, session, render_template, url_for, redirect, request, flash
-from util import authenticate
+from datetime import datetime
+from util import authenticate, make_blog
 import os
 
 app = Flask(__name__)
@@ -20,7 +21,7 @@ def reg():
         return render_template("register.html")
     else:
         success, message = authenticate.register_user(
-                request.form['username'], 
+                request.form['username'],
                 request.form['password'],
                 request.form['re-enter password'])
         flash(message)
@@ -40,7 +41,7 @@ def login():
         flash(message)
         if success:
             session['loggedin']=request.form['username']
-            return redirect(url_for('userpage', username=request.form['username']));
+            return redirect(url_for('userpage', username=request.form['username']))
         else:
             return redirect(url_for('login'))
 
@@ -56,7 +57,29 @@ def logout():
     session.pop('loggedin')
     return redirect(url_for('login'))
 
-    
+@app.route('/create', methods=["GET", "POST"])
+def create():
+    if session.get('loggedin') is None:
+        flash("You must be logged in to create a post")
+        return redirect(url_for('main'))
+    elif request.method=="GET":
+        return render_template("create.html")
+    else:
+        time = str(datetime.now())
+        print(request.form['title'])
+        success, message = make_blog.create(
+            request.form['title'],
+            request.form['category'],
+            session['loggedin'],
+            time
+        )
+        flash(message)
+        if success:
+            return redirect(url_for('userpage', username=session['loggedin']))
+        else:
+            return redirect(url_for('create'))
+
+
 if __name__ == "__main__":
     app.debug=True
     app.run()
