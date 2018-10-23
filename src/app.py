@@ -7,6 +7,8 @@ from flask import Flask, session, render_template, url_for, redirect, request, f
 from datetime import datetime
 from util import authenticate, make_blog
 import os
+import sys
+os.chdir(sys.path[0])
 
 app = Flask(__name__)
 app.secret_key=os.urandom(32)
@@ -54,15 +56,19 @@ def userpage(username):
     if authenticate.user_exists(username):
         user_id = make_blog.find_id(username)
         blogs = make_blog.get_titles(user_id)
-        print(blogs)
+        # print(blogs)
         return render_template("userpage.html", username=username, blogs=blogs)
     else:
         return "temp"
 
 @app.route('/logout', methods=["GET", "POST"])
 def logout():
-    session.pop('loggedin')
-    return redirect(url_for('login'))
+    if 'loggedin' in session:
+        session.pop('loggedin')
+        flash("Successfully logged out.")
+    else:
+        flash("You are not logged in.")
+    return redirect(url_for('main'))
 
 @app.route('/create', methods=["GET", "POST"])
 def create():
