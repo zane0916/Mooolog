@@ -123,7 +123,13 @@ brianL -- 2018-10-24 12:27
 (Reminder to self: Ask for formal permission to use it)
 ==============================================================
 
+<<<<<<< HEAD
 emilyL -- 2018-10-24 12:34
 -------------------------------------------------------------
 - Adding logout and redirects to user page if logged in
+=======
+brianL -- 2018-10-24 12:33
+-------------------------------------------------------------
+- Login page redirects you back if you are already logged in
+>>>>>>> 843887bf9a2829925f431b9d87d8f5e48a8b6b57
 ==============================================================
