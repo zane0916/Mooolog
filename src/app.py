@@ -7,6 +7,7 @@ from flask import Flask, session, render_template, url_for, redirect, request, f
 from datetime import datetime
 from util import authenticate, make_blog
 import os
+import sqlite3
 
 app = Flask(__name__)
 app.secret_key=os.urandom(32)
@@ -51,7 +52,13 @@ def login():
 @app.route('/user/<username>')
 def userpage(username):
     if authenticate.user_exists(username):
-        return render_template("userpage.html", username=username)
+        with sqlite3.connect("data/Mooolog.db") as db:
+            c = db.cursor()
+            command = "SELECT user_id FROM users WHERE username = ?"
+            user_id = c.execute(command, (username,))
+            command = "SELECT title FROM blogs WHERE user_id = ?"
+            blogs = c.execute(command, (user_id,))
+        return render_template("userpage.html", username=username, blogs=blogs)
     else:
         return "temp"
 
