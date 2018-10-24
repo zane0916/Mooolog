@@ -138,3 +138,12 @@ brianL -- 2018-10-24 12:33
 - Made is_loggedin function
 - Bunch of redirects depending on whether the user is logged in or not
 ==============================================================
+
+joshuaW -- 2018-10-22 3:45
+-------------------------------------------------------------
+- Fixed database querying error - can now query blogs by user_id
+- Fixed is_loggedin
+- Added list of user-made blogs on user homepage
+- Fixed issue of printing tuples of queried database data
+- Working on flashed error-messages, creating edit blog functionality
+==============================================================
