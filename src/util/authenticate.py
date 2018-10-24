@@ -41,7 +41,6 @@ def user_exists(username):
 def login_user(username, password):
     '''
     Attempts to log in a user by checking the users table.
-
     Returns a tuple containing a boolean indicating success
     and a message to flash to the user.
     '''
