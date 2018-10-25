@@ -3,9 +3,16 @@
 {% block title %}{{name}} | Moolog{% endblock %}
 
 {% block body %}
-<h1>{{name}}</h1>
+<h1>{{blog[0]}}</h1>
+{{blog[3]}}
 <p>
   <h3>By: {{blog[4]}}</h3> at {{blog[5]}}
 </p>
+
+<br><br>
+<a href="/">My Blogs</a>
+
+<br><br><br>
+<a href="/logout">Logout</a>
 
 {% endblock %}
