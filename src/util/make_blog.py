@@ -1,6 +1,5 @@
 import sqlite3
 
-
 def create(title, category, username, timestamp):
     db = sqlite3.connect("data/Mooolog.db")
     c = db.cursor()

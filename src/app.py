@@ -59,7 +59,10 @@ def userpage(username):
         user_id = make_blog.find_id(username)
         blogs = make_blog.get_titles(user_id)
         # print(blogs)
-        return render_template("userpage.html", username=username, blogs=blogs)
+        return render_template("userpage.html",
+                username=username,
+                blogs=blogs,
+                loggedin=authenticate.is_loggedin(session))
     else:
         flash("User does not exist")
         return redirect(url_for('main'))
@@ -76,7 +79,7 @@ def logout():
 @app.route('/create', methods=["GET", "POST"])
 def create():
     if not authenticate.is_loggedin(session):
-        flash("You must be logged in to create a post")
+        flash("You must be logged in to create a blog")
         return redirect(url_for('main'))
     elif request.method=="GET":
         return render_template("create.html")
@@ -107,6 +110,10 @@ def blog(title):
     else:
         flash("Blog does not exist")
         return redirect(url_for('main'))
+
+@app.route('/blog/<title>/createEntry')
+def create_entry(title):
+    return "Temp"
 
 @app.route('/search')
 def search():
