@@ -101,6 +101,8 @@ def blog(title):
         flash("You must be logged in to view blogs")
         return redirect(url_for('main'))
     if make_blog.blog_exists(title):
+        if make_blog.get_user(title)!=session['loggedin']:
+            return render_template("blog.html",name=title,author=make_blog.get_user(title),blog=make_blog.get_blog(title))
         return render_template("blog.html",name=title,blog=make_blog.get_blog(title))
     else:
         flash("Blog does not exist")

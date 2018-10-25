@@ -51,3 +51,11 @@ def get_blog(u_title):
         c.execute(command, (u_title,))
         blogs = c.fetchall()
         return blogs[0]
+    
+def get_user(u_title):
+    with sqlite3.connect("data/Mooolog.db") as db:
+        c = db.cursor()
+        command = "SELECT author FROM blogs WHERE title=?"
+        c.execute(command, (u_title,))
+        blogs = c.fetchall()
+        return blogs[0][0]
