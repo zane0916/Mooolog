@@ -7,7 +7,7 @@ def create(title, category, username, timestamp):
     if title=="" or category=="" or username=="" or timestamp is None:
         return(False, "Make sure all required fields are filled in")
 
-    if blog_exists(title):
+    if get_exists(title):
         return(False, "A blog with title {} already exists".format(title))
     else:
         user_num = find_id(username)
@@ -47,7 +47,7 @@ def get_titles(u_id):
 def get_blog(u_title):
     with sqlite3.connect("data/Mooolog.db") as db:
         c = db.cursor()
-        command = "SELECT category FROM blogs WHERE title=?"
+        command = "SELECT * FROM blogs WHERE title=?"
         c.execute(command, (u_title,))
         blogs = c.fetchall()
-        return blogs[0][0]
+        return blogs[0]

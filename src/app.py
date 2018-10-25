@@ -82,7 +82,7 @@ def create():
         return render_template("create.html")
     else:
         time = str(datetime.now())
-        print(request.form['title'])
+        # print(request.form['title'])
         success, message = make_blog.create(
             request.form['title'],
             request.form['category'],
@@ -101,7 +101,7 @@ def blog(title):
         flash("You must be logged in to view blogs")
         return redirect(url_for('main'))
     if make_blog.blog_exists(title):
-        return render_template("blogs.html",name=title,text=make_blog.get_blog(title))
+        return render_template("blog.html",name=title,blog=make_blog.get_blog(title))
     else:
         flash("Blog does not exist")
         return redirect(url_for('main'))

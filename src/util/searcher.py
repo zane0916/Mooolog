@@ -8,7 +8,7 @@ def search(user):
     userlist = list(c.execute("SELECT username FROM users"))
     for i in range (len(userlist)):
         userlist[i] = userlist[i][0]
-    print (userlist)
+    # print (userlist)
     if user in userlist:
         #return 'True'
         #print (user)
@@ -18,6 +18,5 @@ def search(user):
         #return 'true'
     else:
         return (False, "User {} does not exist. Please try again.".format(user))
-    
-    db.close()
 
+    db.close()
