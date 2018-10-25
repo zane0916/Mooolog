@@ -43,3 +43,11 @@ def get_titles(u_id):
         c.execute(command, (u_id,))
         blogs = c.fetchall()
         return blogs
+
+def get_blog(u_title):
+    with sqlite3.connect("data/Mooolog.db") as db:
+        c = db.cursor()
+        command = "SELECT category FROM blogs WHERE title=?"
+        c.execute(command, (u_title,))
+        blogs = c.fetchall()
+        return blogs[0][0]

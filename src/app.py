@@ -61,7 +61,8 @@ def userpage(username):
         # print(blogs)
         return render_template("userpage.html", username=username, blogs=blogs)
     else:
-        return "temp"
+        flash("User does not exist")
+        return redirect(url_for('main'))
 
 @app.route('/logout', methods=["GET", "POST"])
 def logout():
@@ -96,7 +97,14 @@ def create():
 
 @app.route('/blog/<title>')
 def blog(title):
-    return "Temp"
+    if not authenticate.is_loggedin(session):
+        flash("You must be logged in to view blogs")
+        return redirect(url_for('main'))
+    if make_blog.blog_exists(title):
+        return render_template("blogs.html",name=title,text=make_blog.get_blog(title))
+    else:
+        flash("Blog does not exist")
+        return redirect(url_for('main'))
 
 @app.route('/search')
 def search():
