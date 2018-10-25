@@ -6,6 +6,7 @@ def search(user):
     c = db.cursor()
 
     userlist = list(c.execute("SELECT username FROM users"))
+    print(userlist)
     for i in range (len(userlist)):
         userlist[i] = userlist[i][0]
     if user in userlist:
