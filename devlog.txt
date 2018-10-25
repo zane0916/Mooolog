@@ -99,7 +99,7 @@ brianL -- 2018-10-22 12:34
 Basic userpage
 =============================================================
 
-joshuaW -- 2018-10-22 10:45
+joshuaW -- 2018-10-23 10:45
 -------------------------------------------------------------
 - Started the blog creation functionality
 - Wrote make_blog.py and included create, helper functions
@@ -139,7 +139,7 @@ brianL -- 2018-10-24 12:33
 - Bunch of redirects depending on whether the user is logged in or not
 ==============================================================
 
-joshuaW -- 2018-10-22 3:45
+joshuaW -- 2018-10-24 15:45
 -------------------------------------------------------------
 - Fixed database querying error - can now query blogs by user_id
 - Fixed is_loggedin
@@ -148,7 +148,7 @@ joshuaW -- 2018-10-22 3:45
 - Working on flashed error-messages, creating edit blog functionality
 ==============================================================
 
-thomasL-- 2018-10-24 8:03
+thomasL-- 2018-10-24 20:03
 -------------------------------------------------------------
 - Added basic search functionality
 ==============================================================
