@@ -7,7 +7,7 @@ def create(title, category, username, timestamp):
     if title=="" or category=="" or username=="" or timestamp is None:
         return(False, "Make sure all required fields are filled in")
 
-    if get_exists(title):
+    if blog_exists(title):
         return(False, "A blog with title {} already exists".format(title))
     else:
         user_num = find_id(username)
