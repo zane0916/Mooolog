@@ -5,7 +5,7 @@
 
 from flask import Flask, session, render_template, url_for, redirect, request, flash
 from datetime import datetime
-from util import authenticate, make_blog
+from util import authenticate, make_blog, searcher
 import os
 
 app = Flask(__name__)
@@ -97,6 +97,20 @@ def create():
 @app.route('/blog/<title>')
 def blog(title):
     return "Temp"
+
+@app.route('/search')
+def search():
+    return render_template('search.html')
+
+@app.route('/searchResults')
+def result():
+    item = request.args['item']
+    success, message = searcher.search(item)
+    if success:
+        return message
+    else:
+        flash(message)
+        return redirect(url_for('search'))
 
 if __name__ == "__main__":
     app.debug=True

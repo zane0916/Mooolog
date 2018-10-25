@@ -147,3 +147,9 @@ joshuaW -- 2018-10-22 3:45
 - Fixed issue of printing tuples of queried database data
 - Working on flashed error-messages, creating edit blog functionality
 ==============================================================
+
+thomasL-- 2018-10-24 8:03
+-------------------------------------------------------------
+- Added basic search functionality
+==============================================================
+
