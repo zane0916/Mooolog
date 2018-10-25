@@ -115,7 +115,7 @@ def result():
     item = request.args['item']
     success, message = searcher.search(item)
     if success:
-        return message
+        return redirect(url_for('userpage', username = item))
     else:
         flash(message)
         return redirect(url_for('search'))
