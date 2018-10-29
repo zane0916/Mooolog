@@ -6,10 +6,9 @@
 <center>
 <h1>{{name}}</h1>
 <p>
-  Blog started by <strong>{{blog[4]}}</strong> on {{blog[5]}}
+  Blog started by <strong><a href="/user/{{blog[4]}}">{{blog[4]}}</a></strong> on {{blog[5]}}
 </p>
 <p>
-  <h3>See more of {{blog[4]}}'s blogs <a href="/user/{{blog[4]}}">HERE!</a></h3>
 </p>
   {% if user_id == blog[1] %}
   <hr>
