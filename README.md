@@ -29,3 +29,17 @@ python app.py
   which must both exist and match.
 	- Successful logins send you to a welcome page where you can
 	  create blogs.
+
+## Modules Used
+
+### datetime
+[Documentation](https://docs.python.org/3/library/datetime.html)
+
+Provides access to time. 
+It was used to record when each blog post was made.
+
+### werkzeug
+[Documentation](http://werkzeug.pocoo.org/)
+
+Provided hashing functions since passwords should not be stored as plaintext for security.
+Passwords are stored in the database as hashes created by werkzeug and checked by hashing the user's input and comparing it to the hashed password.
