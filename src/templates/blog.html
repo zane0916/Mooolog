@@ -3,18 +3,38 @@
 {% block title %}{{name}} | Moolog{% endblock %}
 
 {% block body %}
-<h1>{{blog[0]}}</h1>
-{{blog[3]}}
+<center>
+<h1>{{name}}</h1>
 <p>
-  <h3>By: {{blog[4]}}</h3> at {{blog[5]}}
+  Blog started by <strong>{{blog[4]}}</strong> on {{blog[5]}}
 </p>
 
-<br><br>
-<a href="/user/"+{{author}}> {{author}}</a>
-<br><br>
-<a href="/">My Blogs</a>
+  {% if user_id == blog[1] %}
+  <hr>
+  <h2>Add a blog entry!</h2>
+  <form action="/blog/{{name}}" method="POST">
+    <p>
+      <input type="text" name="title" placeholder="Entry Title"></input>
+    </p>
+    <p>
+      <textarea type="text" name="content" placeholder="Entry content"></textarea>
+    </p>
+    <p>
+      <input type="submit" name="Submit" value="Submit">
+    </p>
+  </form>
+  {% endif %}
+  {% for entry in entries %}
+  <hr>
+  <p>
+    <h2>{{entry[2]}}</h2>
+    <p>
+      <h4>Posted at {{entry[4]}}</h4>
+      {{entry[3]}}
+    </p>
+  </p>
+  {% endfor %}
 
-<br><br><br>
-<a href="/logout">Logout</a>
+</center>
 
 {% endblock %}
