@@ -72,4 +72,4 @@ def get_userid(session):
         c = db.cursor()
         command = "SELECT user_id FROM users WHERE username = ?"
         c.execute(command, (name,))
-        return c.fetchall()[0][0]
+        return c.fetchone()[0]

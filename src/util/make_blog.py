@@ -1,6 +1,5 @@
 import sqlite3
 
-
 def create(title, category, username, timestamp):
     db = sqlite3.connect("data/Mooolog.db")
     c = db.cursor()
@@ -49,8 +48,14 @@ def get_blog(u_title):
         c = db.cursor()
         command = "SELECT * FROM blogs WHERE title=?"
         c.execute(command, (u_title,))
-        blogs = c.fetchall()
-        return blogs[0]
+        return c.fetchone()
+
+def get_blog_from_id(blog_id):
+    with sqlite3.connect("data/Mooolog.db") as db:
+        c = db.cursor()
+        command = "SELECT * FROM blogs WHERE blog_id=?"
+        c.execute(command, (blog_id,))
+        return c.fetchone()
 
 def get_entries(b_id):
     with sqlite3.connect("data/Mooolog.db") as db:

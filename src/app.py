@@ -129,6 +129,25 @@ def blog(title):
         flash(message)
         return redirect(url_for('blog', title=title))
 
+@app.route('/delete_entry/<entry_id>', methods=["GET"])
+def delete_entry(entry_id):
+    username = authenticate.is_loggedin(session)
+    if not username:
+        flash("You must be logged in to delete entries.")
+        return redirect(url_for("main"))
+    entry = entry_control.get_entry(entry_id)
+    if not entry:
+        flash("Entry does not exist.")
+        return redirect(url_for("main"))
+    blog_id = entry[1]
+    blog = make_blog.get_blog_from_id(blog_id)
+    if username != blog[4]:
+        flash("You may only delete your own entries.")
+        return redirect(url_for("blog", title=blog[2]))
+    entry_control.delete_entry(entry_id)
+    flash("Successfully deleted entry.")
+    return redirect(url_for("blog", title=blog[2]))
+
 @app.route('/search')
 def search():
     return render_template('search.html')
