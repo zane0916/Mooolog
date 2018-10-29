@@ -148,6 +148,30 @@ def delete_entry(entry_id):
     flash("Successfully deleted entry.")
     return redirect(url_for("blog", title=blog[2]))
 
+@app.route("/edit_entry/<entry_id>", methods=["GET", "POST"])
+def edit(entry_id):
+    username = authenticate.is_loggedin(session)
+    if not username:
+        flash("You must be logged in to edit entries.")
+        return redirect(url_for("main"))
+    entry = entry_control.get_entry(entry_id)
+    if not entry:
+        flash("Entry does not exist.")
+        return redirect(url_for("main"))
+    if request.method=="GET":
+        return render_template("edit_entry.html", entry=entry)
+    else:
+        time = str(datetime.now())
+        success, message = entry_control.edit_entry(
+                entry_id,
+                request.form['title'],
+                request.form['content'],
+                time
+        )
+        flash(message)
+        blog = make_blog.get_blog_from_id(entry[1])
+        return redirect(url_for('blog', title=blog[2]))
+
 @app.route('/search')
 def search():
     if not authenticate.is_loggedin(session):

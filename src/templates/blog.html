@@ -18,15 +18,18 @@
       <input type="text" name="title" placeholder="Entry Title"></input>
     </p>
     <p>
-      <textarea type="text" name="content" placeholder="Entry content"></textarea>
+      <textarea type="text" name="content" placeholder="Entry content" style="width: 400px;
+  height: 200px;"></textarea>
     </p>
     <p>
       <input type="submit" name="Submit" value="Submit">
     </p>
   </form>
   {% endif %}
+  <table border="1px" style="width:700px;">
   {% for entry in entries %}
-  <hr>
+  <tr>
+  <td>
   <p>
     <h2>{{entry[2]}}</h2>
     <p>
@@ -34,11 +37,14 @@
       {{entry[3]}}
     </p>
   </p>
-  <br>
+  </td>
   {% if user_id == blog[1] %}
-    <a href="/delete_entry/{{entry[0]}}">Delete</a>
+    <td><a href="/edit_entry/{{entry[0]}}">Edit</a></td>
+    <td><a href="/delete_entry/{{entry[0]}}">Delete</a></td>
   {% endif %}
+  </tr>
   {% endfor %}
+  </table>
 </center>
 
 <br><br>

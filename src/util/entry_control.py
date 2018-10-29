@@ -19,6 +19,17 @@ def delete_entry(entry_id):
     db.commit()
     return (True, "Succesfully deleted entry.")
 
+def edit_entry(entry_id, title, content, timestamp):
+    db = sqlite3.connect("data/Mooolog.db")
+    c = db.cursor()
+    if title=="" or content=="" or timestamp is None:
+        return(False, "Make sure all required fields are filled in")
+    else:
+        command="UPDATE entries SET title = (?), content = (?), timestamp=(?) WHERE entry_id=(?);"
+        c.execute(command, (title, content, timestamp, entry_id,))
+    db.commit()
+    return (True, "Successfully edited entry {}".format(title))
+
 def get_entry(entry_id):
     '''
     Returns a list containing data about an entry given its ID.
