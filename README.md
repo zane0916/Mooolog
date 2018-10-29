@@ -18,12 +18,17 @@ pip3 install wheel
 pip3 install flask
 ```
 
+If running for the first time, the SQLite database must be initialized.
+Go to the `src\data` directory and run:
+```
+python init_table.py
+```
+(It will also reset the database if one already exists.)
+
 To run the code, go to the `src` directory and run:
 ```
-python data/init_table.py
 python app.py
 ```
-init\_table.py is used to initiate the SQLite database.
 
 - Home page should show up with options to register or to login.
 - Register redirects you to a page to create a username and passwords-
