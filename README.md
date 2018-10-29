@@ -20,7 +20,7 @@ pip3 install flask
 
 To run the code, go to the `src` directory and run:
 ```
-python init_table.py
+python data/init_table.py
 python app.py
 ```
 init\_table.py is used to initiate the SQLite database.
