@@ -195,6 +195,12 @@ thomasL-- 2018-10-28 20:50
 - Fixed minor bugs
 ==============================================================
 
+joshuaW -- 2018-10-28 21:25
+-------------------------------------------------------------
+- Changed html, fixed issue with blog entries showing
+incorrect data
+==============================================================
+
 brianL -- 2018-10-28 22:00
 -------------------------------------------------------------
 - Helper function to get a specific entry given its ID
@@ -206,3 +212,9 @@ thomasL-- 2018-10-28 22:06
 - Updated search such that blogs can also be searched for
 ==============================================================
 
+joshuaW -- 2018-10-28 20:38
+-------------------------------------------------------------
+- Finalized display of blogs & entries
+- Made edit entry feature
+- Edit entry and delete function controlled for correct user
+==============================================================
