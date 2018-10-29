@@ -5,26 +5,27 @@
 {% block body %}
 <h1>Users</h1>
 <ul>
+<h3>Matching users found from query "{{item}}"</h3>
 {% if userin %}
 <a href="/user/{{item}}">User {{item}} exists!</a>
 <br>
 {% else %}
 <p> User {{item}} does not exist. </p>
-<a href="/search">Search Again!</a>
 <br>
 {% endif %}
 </ul>
 
 <h1>Blogs</h1>
 <ul>
+<h3>Matching blogs found from query "{{item}}"</h3>
 {% if blogin %}
 <a href="/blog/{{item}}">Blog {{item}} exists!</a>
 <br>
 {% else %}
 <p> Blog {{item}} does not exist. </p>
-<a href="/search">Search Again!</a>
 </ul>
 <br>
+<a href="/search"><h3>Search Again!</h3></a>
 <br>
 {% endif %}
 
