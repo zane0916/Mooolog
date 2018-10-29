@@ -23,21 +23,14 @@
 {% else %}
 <p> Blog {{item}} does not exist. </p>
 <a href="/search">Search Again!</a>
+</ul>
+<br>
 <br>
 {% endif %}
 
-
-<br>
-<br>
-<a href="/search">Search</a>
-
 {% if loggedin %}
-    <br>
-    <br>
     <a href="/create">Create a New Blog</a>
-    <br>
     <br>
     <a href="/logout">Logout</a>
 {% endif %}
 {% endblock %}
-

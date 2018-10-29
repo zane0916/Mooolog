@@ -3,24 +3,21 @@
 {% block title %} {{username}}'s Blogs {% endblock %}
 
 {% block body %}
-
+<center>
+  <form action="/searchResults">
+    Search:
+    <input type="text" name="item" placeholder="search for user or blog">
+    <input type="submit" name="submit" value="Search">
+  </form>
 <h1>{{username}}'s Blogs:</h1>
 <ul>
 {% for blog in blogs %}
 <li><a href="/blog/{{blog[2]}}">{{blog[2]}}</a></li>
 {% endfor %}
-
-<br>
-<br>
-<a href="/search">Search</a>
+</center>
 
 {% if loggedin %}
-    <br>
-    <br>
     <a href="/create">Create a New Blog</a>
-    <br><br>
-    <a href="/">My Blogs</a>
-    <br>
     <br>
     <a href="/logout">Logout</a>
 {% endif %}

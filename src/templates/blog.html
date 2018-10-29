@@ -35,12 +35,10 @@
     </p>
   </p>
   <br>
-  <a href="/delete_entry/{{entry[0]}}">Delete</a>
+  {% if user_id == blog[1] %}
+    <a href="/delete_entry/{{entry[0]}}">Delete</a>
+  {% endif %}
   {% endfor %}
 </center>
-<br><br>
-<a href="/">My Blogs</a>
 
-<br><br><br>
-<a href="/logout">Logout</a>
 {% endblock %}

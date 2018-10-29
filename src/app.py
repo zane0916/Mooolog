@@ -150,7 +150,11 @@ def delete_entry(entry_id):
 
 @app.route('/search')
 def search():
-    return render_template('search.html')
+    if not authenticate.is_loggedin(session):
+        flash("You must be logged in to search")
+        return redirect(url_for('main'))
+    else:
+        return render_template("search.html")
 
 @app.route('/searchResults')
 def result():
@@ -170,7 +174,7 @@ def result():
         flash(message)
         return redirect(url_for('search'))
     '''
-    
+
 if __name__ == "__main__":
     app.debug=True
     app.run()
