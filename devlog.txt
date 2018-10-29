@@ -212,7 +212,7 @@ thomasL-- 2018-10-28 22:06
 - Updated search such that blogs can also be searched for
 ==============================================================
 
-joshuaW -- 2018-10-28 20:38
+joshuaW -- 2018-10-29 00:38
 -------------------------------------------------------------
 - Finalized display of blogs & entries
 - Made edit entry feature
