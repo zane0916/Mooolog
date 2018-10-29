@@ -20,8 +20,11 @@ pip3 install flask
 
 To run the code, go to the `src` directory and run:
 ```
+python init_table.py
 python app.py
 ```
+init\_table.py is used to initiate the SQLite database.
+
 - Home page should show up with options to register or to login.
 - Register redirects you to a page to create a username and passwords-
   the username must not already exist and the passwords must match.
