@@ -136,13 +136,22 @@ def search():
 @app.route('/searchResults')
 def result():
     item = request.args['item']
+    return render_template('searchresults.html',
+                           item = item,
+                           userin = searcher.search_user(item),
+                           blogin = searcher.search_blog(item),
+                           loggedin=authenticate.is_loggedin(session)
+                           )
+
+    '''
     success, message = searcher.search(item)
     if success:
         return redirect(url_for('userpage', username = item))
     else:
         flash(message)
         return redirect(url_for('search'))
-
+    '''
+    
 if __name__ == "__main__":
     app.debug=True
     app.run()
