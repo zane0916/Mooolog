@@ -65,3 +65,11 @@ def is_loggedin(session):
     if session.get('loggedin') is None:
         return False
     return session.get('loggedin')
+
+def get_userid(session):
+    name = is_loggedin(session)
+    with sqlite3.connect("data/Mooolog.db") as db:
+        c = db.cursor()
+        command = "SELECT user_id FROM users WHERE username = ?"
+        c.execute(command, (name,))
+        return c.fetchall()[0][0]

@@ -1,5 +1,6 @@
 import sqlite3
 
+
 def create(title, category, username, timestamp):
     db = sqlite3.connect("data/Mooolog.db")
     c = db.cursor()
@@ -10,7 +11,7 @@ def create(title, category, username, timestamp):
         return(False, "A blog with title {} already exists".format(title))
     else:
         user_num = find_id(username)
-        command="INSERT INTO blogs (user_id, title, category, author, time_stamp) VALUES(?, ?, ?, ?, ?);"
+        command="INSERT INTO blogs (user_id, title, category, author, timestamp) VALUES(?, ?, ?, ?, ?);"
         c.execute(command, (user_num, title, category, username, timestamp))
 
     db.commit()
@@ -50,11 +51,10 @@ def get_blog(u_title):
         c.execute(command, (u_title,))
         blogs = c.fetchall()
         return blogs[0]
-    
-def get_user(u_title):
+
+def get_entries(b_id):
     with sqlite3.connect("data/Mooolog.db") as db:
         c = db.cursor()
-        command = "SELECT author FROM blogs WHERE title=?"
-        c.execute(command, (u_title,))
-        blogs = c.fetchall()
-        return blogs[0][0]
+        command = "SELECT * FROM entries WHERE blog_id=?"
+        c.execute(command, (b_id,))
+        return c.fetchall()

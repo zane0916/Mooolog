@@ -5,7 +5,7 @@
 
 from flask import Flask, session, render_template, url_for, redirect, request, flash
 from datetime import datetime
-from util import authenticate, make_blog, searcher
+from util import authenticate, make_blog, searcher, entry_control
 import os
 
 app = Flask(__name__)
@@ -98,22 +98,36 @@ def create():
         else:
             return redirect(url_for('create'))
 
-@app.route('/blog/<title>')
+@app.route('/blog/<title>', methods=["GET", "POST"])
 def blog(title):
     if not authenticate.is_loggedin(session):
         flash("You must be logged in to view blogs")
         return redirect(url_for('main'))
-    if make_blog.blog_exists(title):
-        if make_blog.get_user(title)!=session['loggedin']:
-            return render_template("blog.html",name=title,blog=make_blog.get_blog(title))
-        return render_template("blog.html",name=title,blog=make_blog.get_blog(title))
+    if request.method=="GET":
+        if make_blog.blog_exists(title):
+            user_id = authenticate.get_userid(session)
+            # print(user_id)
+            name = title
+            blog=make_blog.get_blog(title)
+            # print(blog[1])
+            entries=make_blog.get_entries(blog[0])
+            # print(entries)
+            return render_template("blog.html",name=name,blog=blog, entries=entries, user_id=user_id)
+        else:
+            flash("Blog does not exist")
+            return redirect(url_for('main'))
     else:
-        flash("Blog does not exist")
-        return redirect(url_for('main'))
-
-@app.route('/blog/<title>/createEntry')
-def create_entry(title):
-    return "Temp"
+        time = str(datetime.now())
+        blog=make_blog.get_blog(title)
+        blog_id = blog[0]
+        success, message = entry_control.create_entry(
+                blog_id,
+                request.form['title'],
+                request.form['content'],
+                time
+        )
+        flash(message)
+        return redirect(url_for('blog', title=title))
 
 @app.route('/search')
 def search():
