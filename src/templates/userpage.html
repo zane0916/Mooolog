@@ -12,12 +12,14 @@
 <h1>{{username}}'s Blogs:</h1>
 <ul>
 {% for blog in blogs %}
-<li><a href="/blog/{{blog[2]}}">{{blog[2]}}</a></li>
+<a href="/blog/{{blog[2]}}">{{blog[2]}}</a><br>
 {% endfor %}
 </center>
-
+<br><br>
 {% if loggedin %}
     <a href="/create">Create a New Blog</a>
+    <br>   
+    <a href="/">My Blogs</a>
     <br>
     <a href="/logout">Logout</a>
 {% endif %}
