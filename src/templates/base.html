@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     {% block head %}
     <title>
       {% block title %}{% endblock %}
     </title>
     {% endblock %}
-    </head>
+  </head>
     <body>
         <center><h1><a href="/">Mooolog</a></h1></center>
         {% with msgs = get_flashed_messages() %}
@@ -23,6 +24,6 @@
 
         <br><br>
         <hr>
-        <center>Site by Team Mooo - Brian Lee, Emily Lee, Thomas Lee, Joshua Weiner</center>
-    </body>
+        <center id="footer">Site by Team Mooo - Brian Lee, Emily Lee, Thomas Lee, Joshua Weiner</center>
+  </body>
 </html>
