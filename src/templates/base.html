@@ -2,6 +2,8 @@
 <html>
   <head>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
     {% block head %}
     <title>
       {% block title %}{% endblock %}
@@ -9,11 +11,15 @@
     {% endblock %}
   </head>
     <body>
-        <center><h1><a href="/">Mooolog</a></h1></center>
+        <center>
+          <h1><a href="/" id="home-button">Mooolog</a></h1>
+        </center>
         {% with msgs = get_flashed_messages() %}
             {% if msgs %}
                 {% for msg in msgs %}
-                    <center><i>{{msg}}</i></center>
+                    <center>
+                      <i>{{msg}}</i>
+                    </center>
                 {% endfor %}
             {% endif %}
         {% endwith %}
@@ -23,7 +29,8 @@
         {% endblock %}
 
         <br><br>
-        <hr>
-        <center id="footer">Site by Team Mooo - Brian Lee, Emily Lee, Thomas Lee, Joshua Weiner</center>
+        <center id="footer">
+          Site by Team Mooo - Brian Lee, Emily Lee, Thomas Lee, Joshua Weiner ----- Stylized by Johnson Li, Zane Wang
+        </center>
   </body>
 </html>

@@ -3,38 +3,41 @@
 {% block title  %} Results {% endblock %}
 
 {% block body %}
-<h1>Users</h1>
-<ul>
-<h3>Matching users found from query "{{item}}"</h3>
-{% if userin %}
-<a href="/user/{{item}}">User {{item}} exists!</a>
-<br>
-{% else %}
-<p> User {{item}} does not exist. </p>
-<br>
-{% endif %}
-</ul>
+<div id="search-results">
+    <h1 class="normal-header">Users</h1>
+    <ul>
+    <h3 class="normal-subheader">Matching users found from query "{{item}}"</h3>
+    {% if userin %}
+    <a class="button" href="/user/{{item}}">User {{item}} exists!</a>
+    <br>
+    {% else %}
+    <p class="normal-text"> User {{item}} does not exist. </p>
+    <br>
+    {% endif %}
+    </ul>
 
-<h1>Blogs</h1>
-<ul>
-<h3>Matching blogs found from query "{{item}}"</h3>
-{% if blogin %}
-<a href="/blog/{{item}}">Blog {{item}} exists!</a>
-<br>
-{% else %}
-<p> Blog {{item}} does not exist. </p>
-</ul>
-<br>
-<a href="/search"><h3>Search Again!</h3></a>
-<br>
-{% endif %}
+    <h1 class="normal-header">Blogs</h1>
+    <ul>
+    <h3 class="normal-subheader">Matching blogs found from query "{{item}}"</h3>
+    {% if blogin %}
+    <a class="button" href="/blog/{{item}}">Blog {{item}} exists!</a>
+    <br>
+    {% else %}
+    <p class="normal-text"> Blog {{item}} does not exist. </p>
+    </ul>
+    <br>
+    <a class="button" href="/search"><h3>Search Again!</h3></a>
+    <br>
+    {% endif %}
+</div>
 
 {% if loggedin %}
-<br><br><br>
+<div class="side">
     <a href="/create">Create a New Blog</a>
-    <br>
+
     <a href="/">My Blogs</a>
-    <br>
+
     <a href="/logout">Logout</a>
+</div>
 {% endif %}
 {% endblock %}

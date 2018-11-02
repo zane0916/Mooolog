@@ -5,17 +5,17 @@
 {% block body %}
 <center>
   <form action="/searchResults">
-    Search:
-    <input type="text" name="item" placeholder="search for user or blog" style="min-width:150px;">
-    <input type="submit" name="submit" value="Search">
+    <span class="prompt"> Search: </span>
+    <input class="text-input" type="text" name="item" placeholder="search for user or blog" style="min-width:150px;">
+    <input class="button" type="submit" name="submit" value="Search">
   </form>
-<h1>{{username}}'s Blogs:</h1>
+<h1 class="normal-header">{{username}}'s Blogs:</h1>
 <ul>
-  <table border="1px" style="width:400px;">
+  <table id="blog-table" style="width:400px;">
 {% for blog in blogs %}
   <tr>
     <td>
-    <a href="/blog/{{blog[2]}}"><h3>{{blog[2]}}</h3></a>
+    <a id="table-selection" href="/blog/{{blog[2]}}"><h3>{{blog[2]}}</h3></a>
     </td>
     <td>
       <h3>Category: {{blog[3]}}</h3>
@@ -27,10 +27,10 @@
 </center>
 <br><br>
 {% if loggedin %}
+<div class="side">
     <a href="/create">Create a New Blog</a>
-    <br>
     <a href="/">My Blogs</a>
-    <br>
     <a href="/logout">Logout</a>
+</div>
 {% endif %}
 {% endblock %}

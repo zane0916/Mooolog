@@ -4,29 +4,31 @@
 
 {% block body %}
 <center>
-<h1>{{name}}</h1>
-<p>
+<h1 class="normal-header">{{name}}</h1>
+<p class="normal-subheader">
   Blog started by <strong><a href="/user/{{blog[4]}}">{{blog[4]}}</a></strong> on {{blog[5]}}
 </p>
 <p>
 </p>
   {% if user_id == blog[1] %}
   <hr>
-  <h2>Add a blog entry {{blog[4]}}!</h2>
+  <h2 class="normal-text">Add a blog entry {{blog[4]}}!</h2>
   <form action="/blog/{{name}}" method="POST">
     <p>
-      <input type="text" name="title" placeholder="Entry Title"></input>
+      <input class="text-input" type="text" name="title" placeholder="Entry Title"></input>
     </p>
     <p>
-      <textarea type="text" name="content" placeholder="Entry content" style="width: 400px;
+      <textarea class="text-input" type="text" name="content" placeholder="Entry content" style="width: 400px;
   height: 200px;"></textarea>
     </p>
     <p>
-      <input type="submit" name="Submit" value="Submit">
+      <input class="button" type="submit" name="Submit" value="Submit">
     </p>
+  <br>
+  <br>
   </form>
   {% endif %}
-  <table border="1px" style="width:700px;">
+  <table style="width:700px;">
   {% for entry in entries %}
   <tr>
   <td>
@@ -39,16 +41,17 @@
   </p>
   </td>
   {% if user_id == blog[1] %}
-    <td><a href="/edit_entry/{{entry[0]}}">Edit</a></td>
-    <td><a href="/delete_entry/{{entry[0]}}">Delete</a></td>
+    <td><a class="button" href="/edit_entry/{{entry[0]}}">Edit</a></td>
+    <td><a class="button" href="/delete_entry/{{entry[0]}}">Delete</a></td>
   {% endif %}
   </tr>
   {% endfor %}
   </table>
 </center>
 
-<br><br>
+<div class="side">
 <a href="/">My Blogs</a>
 <br>
 <a href="/logout">Logout</a>
+</div>
 {% endblock %}

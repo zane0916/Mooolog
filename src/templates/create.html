@@ -5,13 +5,13 @@
 <h2>Create A Blog</h2>
 <form action="/create" method="POST">
   <p>
-    <input type="text" name="title" placeholder="Title" style="width:150px;"></input>
+    <input class="text-input" type="text" name="title" placeholder="Title" style="width:150px;"></input>
   </p>
   <p>
-    <input type="text" name="category" placeholder="Category" style="width:150px;"></input>
+    <input class="text-input" type="text" name="category" placeholder="Category" style="width:150px;"></input>
   </p>
   <p>
-    <input type="submit"></input>
+    <input class="button" type="submit"></input>
   </p>
 </form>
 {% if success %}
@@ -30,8 +30,9 @@
 </form>
 {% endif %}
 </center>
-<br><br>
+<div class="side">
 <a href="/">My Blogs</a>
 <br>
 <a href="/logout">Logout</a>
+</div>
 {% endblock %}

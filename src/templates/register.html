@@ -5,10 +5,10 @@
 {% block body %}
 <form action="/register" method="POST">
 	<center>
-    Create Username:<input type="text" name="username" style="width:150px;"><br>
-	Create Password:<input type="password" name="password" style="width:150px;"><br>
-	Re-enter Password:<input type="password" name="re-enter password" style="width:150px;"><br>
-    <input type="submit" name="Submit" value="Register">
+    <span class="prompt"> Create Username: </span><input class="text-input" type="text" name="username" style="width:150px;"><br>
+	<span class="prompt"> Create Password: </span><input class="text-input" type="password" name="password" style="width:150px;"><br>
+	<span class="prompt"> Re-enter Password: </span><input class="text-input" type="password" name="re-enter password" style="width:150px;"><br>
+    <input class="button" type="submit" name="Submit" value="Register">
     </center>
 </form>
 {% endblock %}

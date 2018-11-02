@@ -5,14 +5,15 @@
 {% block body %}
 <center>
   <form action="/searchResults">
-    Search:
-    <input type="text" name="item" placeholder="search for user or blog" style="width:150px;">
-    <input type="submit" name="submit" value="Search">
+    <span class="prompt">Search:</span> 
+    <input class="text-input" type="text" name="item" placeholder="search for user or blog">
+    <input class="button" type="submit" name="submit" value="Search">
   </form>
 </center>
-<br><br>
-<a href="/">My Blogs</a>
 
-<br><br><br>
-<a href="/logout">Logout</a>
+<div class="side">
+  <a href="/">My Blogs</a>
+
+  <a href="/logout">Logout</a>
+</div>
 {% endblock %}

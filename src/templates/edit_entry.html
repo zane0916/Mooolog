@@ -4,17 +4,17 @@
 
 {% block body %}
 <center>
-<h1>Editing {{entry[2]}}</h1>
+<h1 class="normal-header">Editing {{entry[2]}}</h1>
   <form action="/edit_entry/{{entry[0]}}" method="POST">
     <p>
-      <input type="text" name="title" value="{{entry[2]}}"></input>
+      <input class="text-input" type="text" name="title" value="{{entry[2]}}"></input>
     </p>
     <p>
-      <textarea type="text" name="content" placeholder="Entry content" style="width: 400px;
+      <textarea class="text-input" type="text" name="content" placeholder="Entry content" style="width: 400px;
   height: 200px;">{{entry[3]}}</textarea>
     </p>
     <p>
-      <input type="submit" name="Submit" value="Submit">
+      <input class="button" type="submit" name="Submit" value="Submit">
     </p>
   </form>
 
